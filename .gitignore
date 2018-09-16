@@ -1,0 +1,5 @@
+﻿# general files or folders
+node_modules/
+package-lock.json
+.git-credentials
+.vscode
