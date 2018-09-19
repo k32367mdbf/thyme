@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+
+    <!--Meta Data-->
+    <title>Thyme | 雲端列印</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--預載函式庫-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKsw18dhvpgDAbleyM9hdPKqn8_DQz1AQ&libraries=places"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+    <script src="/lib/webcomponents-bundle.js"></script>
+    <script>
+        const 狀態 = {
+            登入: true,
+        }
+        const 頁面 = ''
+    </script>
+
+    <!--元件-->
+    <script type="module" src="/component/bkg-paper-anima/-.js"></script>
+    <script type="module" src="/component/header-x/-.js"></script>
+    <script type="module" src="/component/login-panel/-.js"></script>
+    <script type="module" src="/component/order-generator/-.js"></script>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/page/index-logedin/-.css">
+
+</head>
+<body>
+
+    <bkg-paper-anima></bkg-paper-anima>
+
+    <header-x>
+        <i slot="icon" class="far fa-user"></i>
+    </header-x>
+
+    <order-generator></order-generator>
+
+    <!--函式庫-->
+    <script src="/lib/argon2.js"></script>
+
+    <!--JS-->
+    <script type="module" src="/page/index-logedin/-.js"></script>
+
+</body>
+
+</html>

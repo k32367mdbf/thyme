@@ -1,0 +1,82 @@
+<div id="setting-menu">
+    
+    <div id="基本資訊區塊" style="display: none;">
+        <h1>基本資訊</h1>
+        <form id="基本資訊">
+            <label for="姓">姓</label>
+            <input type="text" name="姓">
+    
+            <label for="名">名</label>
+            <input type="text" name="名">
+    
+            <label for="信箱">信箱</label>
+            <input type="email" name="信箱">
+    
+            <label for="手機">手機</label>
+            <input type="tel" name="手機" pattern="[0-9]{10}">
+    
+            <slot name="基本資訊"></slot>
+    
+            <button type="submit">保存</button>
+        </form>
+    </div>
+
+    <div id="我的訂單區塊">
+        <h1>我的訂單</h1>
+        <slot name="我的訂單"></slot>
+        <div id="我的訂單列表"></div>
+    </div>
+
+    <div id="mask" style="display: none;"></div>
+        <div id="map" style="display: none;"></div>
+        <div id="infowindow-content" style="display: none;">
+            <input id="pac-input" type="text" placeholder="Enter a location">
+            <img id="place-icon" src="" width="16" height="16" >
+            <span id="place-name"  class="title"></span><br>
+            <span id="place-address"></span>
+            <button id="選定地點">確定</button>
+        </div>
+    
+    <div id="店家資訊區塊" style="display: none;">
+        <h1>店家資訊</h1>
+
+        <form id="店家資訊">
+            <label for="店家ID">店家ID</label>
+            <input type="text" placeholder="取得店家ID" name="店家ID" readonly>
+
+            <label for="店名">店名</label>
+            <input type="text" name="店名">
+    
+            <slot name="店家資訊"></slot>
+    
+            <button type="submit">保存</button>
+        </form>
+    </div>
+
+    <div id="印表機區塊" style="display: none;">
+        <h1>印表機</h1>
+        <a target="_blank" href="https://www.google.com/cloudprint/enable_chrome_connector/enable.html">
+            <button>啟用雲端列印</button>
+        </a>
+        <a href="/oauth2">
+            <button>取得授權</button>
+        </a>
+        <br><br>
+        <slot name="印表機"></slot>
+        <div id="印表機列表"></div>
+    </div>
+    
+    <div id="店家訂單區塊" style="display: none;">
+        <h1>店家訂單</h1>
+        <slot name="店家訂單"></slot>
+        <div id="店家訂單列表"></div>
+    </div>
+
+    <div id="列印區塊" style="display: none;">
+        <h1></h1>
+        <label for="訂單號">輸入訂單號</label>
+        <input type="text" name="訂單號" pattern="[A-Z0-9]+">
+        <button>列印</button>
+    </div>
+
+</div>

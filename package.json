@@ -1,0 +1,72 @@
+{
+  "name": "thyme",
+  "version": "0.9.9",
+  "description": "A cloud print service web app",
+  "keywords": [
+    "print",
+    "cloud"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://k32367mdbf.github.io/thyme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k32367mdbf/thyme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/k32367mdbf/thyme/issues",
+    "email": "k32367mdbf@yahoo.com.tw"
+  },
+  "author": {
+    "name": "Ziwei Guo",
+    "email": "k32367mdbf@yahoo.com.tw",
+    "url": "https://github.com/k32367mdbf"
+  },
+  "bin": {},
+  "config": {},
+  "scripts": {
+    "start": "echo undefined command...",
+    "test": "echo undefined command...",
+    "dev": "node dev/script dev",
+    "server": "node dev/script server",
+    "browser": "node dev/script browser",
+    "build": "node dev/script build",
+    "build:html": "node dev/script build:html",
+    "build:css": "node dev/script build:css",
+    "build:js": "node dev/script build:js",
+    "build:img": "node dev/script build:img",
+    "watch": "node dev/script watch",
+    "watch:html": "node dev/script watch:html",
+    "watch:css": "node dev/script watch:css",
+    "watch:js": "node dev/script watch:js",
+    "watch:img": "node dev/script watch:img"
+  },
+  "main": "",
+  "engines": {
+    "node": "^8.11.1",
+    "npm": "^6.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.5",
+    "fs-extra": "^6.0.1",
+    "mongoose": "^5.1.4",
+    "request": "^2.87.0",
+    "spdy": "^3.4.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.5.0",
+    "browser-sync": "^2.24.4",
+    "chalk": "^2.4.1",
+    "concurrently": "^3.5.1",
+    "html-minifier": "^3.5.15",
+    "imagemin-power-cli": "^3.0.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.11.1",
+    "onchange": "^4.0.0",
+    "postcss-cli": "^5.0.0",
+    "uglify-es": "^3.3.9",
+    "uglifyjs-folder": "^1.5.1"
+  }
+}

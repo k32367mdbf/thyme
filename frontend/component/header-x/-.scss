@@ -1,0 +1,44 @@
+#header {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+}
+
+#header-x{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    button, ::content button{
+        -webkit-appearance: none;
+            -moz-appearance: none;
+                appearance: none;
+        float: right;
+        outline: 0;
+        background-color: rgba(255, 255, 255, 0.213);
+        border: 0;
+        padding: 10px 15px;
+        margin: 10px 10px;
+        color: #ffffffd7;
+        border-radius: 20px;
+        width: auto;
+        cursor: pointer;
+        font-size: 18px;
+
+        &:hover{
+            -webkit-transition-duration: 0.25s;
+                transition-duration: 0.25s;
+            background-color: #f5f7f9a8;
+        }
+
+        &#個人檔案 {
+            margin-right: 30px;
+        }
+    }
+
+    #個人檔案 {
+        height: 50px;
+        width: 50px;
+        border-radius: 99px;
+    }
+}

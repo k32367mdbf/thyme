@@ -1,0 +1,40 @@
+<div id="order-generator">
+
+    <div id="mask" style="display: none;"></div>
+    <div id="map" style="display: none;"></div>
+    <div id="infowindow-content" style="display: none;">
+        <img src="" width="16" height="16" id="place-icon">
+        <strong id="place-name" class="title"></strong><br>
+        <p id="place-address"></p>
+        <button id="選定地點">確定</button>
+    </div>
+
+    <div id="訂單區塊" style="display: none;">
+        <label>訂單號</label>
+        <input id="單號" type="test" placeholder="上傳中..." readonly>
+        <button id="newfile">上傳其他檔案</button>
+    </div>
+    
+	<form id="GCP">
+        <input type="hidden" name="title" value="test">
+        <input type="hidden" name="contentType">
+        
+        <div id="guestInfo">
+            <input name="信箱" placeholder="信箱(選填)" type="email">
+            <input name="手機" placeholder="手機(選填)" type="text" pattern="[0-9]{10}">
+        </div>
+
+        <div id="choose">
+            <label id="選擇影印店" for="printerid">選擇影印店</label>
+            <span id="shopInfo"></span><br>
+            <input id="printerid" type="test" required name="printerid">
+
+            <label for="file">選擇檔案</label>
+            <span id="fileInfo"></span><br>
+            <input id="file" type="file" required name="content">
+        </div>
+
+		<button type="submit">上傳</button>
+    </form>
+    
+</div>

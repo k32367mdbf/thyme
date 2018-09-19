@@ -1,0 +1,45 @@
+* { 
+    margin: 0;
+    padding: 0;
+}
+
+
+li {
+    list-style: none;
+}
+
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(75, 109, 129);
+    // background: rgb(20, 85, 123); /* Old Browsers */
+    // background: -webkit-linear-gradient(top left,rgb(20, 85, 123),rgb(127, 206, 197)) fixed; /*Safari 5.1-6*/
+    // background: -o-linear-gradient(top left,rgb(20, 85, 123),rgb(127, 206, 197)) fixed; /*Opera 11.1-12*/
+    // background: -moz-linear-gradient(top left,rgb(20, 85, 123),rgb(127, 206, 197)) fixed; /*Fx 3.6-15*/
+    // background: linear-gradient(top left, rgb(20, 85, 123), rgb(127, 206, 197)) fixed; /*Standard*/
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family: "Consolas","DFYuanMedium-B5";
+    overflow-x: hidden;
+}
+
+
+/*修改反白顏色*/
+::selection {
+	background: rgba(235, 158, 81, 0.9);
+	color: inherit;
+}
+::-moz-selection {
+	background: rgba(235, 158, 81, 0.9);
+	color: inherit;
+}
+
+// get the fuck chrome autofill yellow away
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition-delay: 99999s;
+}

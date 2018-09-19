@@ -1,0 +1,27 @@
+<div id="login-panel">
+
+	<button id="close" style="display: none">
+		<slot name="close"></slot>
+	</button>
+	
+	<form id="登入" style="display: none">
+		<input name="帳號" placeholder="帳號" required type="text" title="任意字元組合">
+		<input name="密碼" placeholder="密碼" required type="password" pattern="[A-Za-z0-9_]+" title="英文、數字或底線">
+		<slot></slot>
+		<label class="container">自動登入<br>
+			<input name="記住我" type="checkbox">
+			<span class="checkmark"></span>
+		</label>
+		<button type="submit">登入</button>
+	</form>
+
+	<form id="註冊" style="display: none">
+		<input name="帳號" placeholder="帳號" required type="text" title="任意字元組合">
+		<input name="信箱" placeholder="信箱" required type="email">
+		<input name="密碼" placeholder="密碼" required type="password" pattern="[A-Za-z0-9_]+" title="英文、數字或底線" 
+			onchange="document.querySelector('login-panel').shadowRoot.querySelector('#註冊 [name=確認密碼]').setAttribute('pattern', this.value)">
+		<input name="確認密碼" placeholder="確認密碼" required type="password" title="請與密碼相同">
+		<slot></slot>
+		<button type="submit">註冊</button>
+	</form>
+</div>

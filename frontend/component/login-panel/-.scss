@@ -1,0 +1,147 @@
+#login-panel{
+
+    // get the fuck chrome autofill yellow away
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition-delay: 99999s;
+    }
+
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    position: absolute;
+    height: 80vh;
+    width: 80vw;
+    margin: 10vh 10vw;
+
+    input, ::content input{
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 300;
+        padding: 10px 15px;
+        margin: 0 auto 20px auto;
+
+        &:not([type=checkbox]){
+            -webkit-appearance: none;
+            -moz-appearance: none;
+                    appearance: none;
+            outline: 0;
+            border: 0px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 280px;
+            border-radius: 5px;
+            
+            color: rgb(255, 255, 255);
+
+            &:hover{
+                -webkit-transition-duration: 0.25s;
+                        transition-duration: 0.25s;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            &:focus{
+                width: 330px;
+                color: #ffffff;
+            }
+        }
+    }
+
+    button, ::content button{
+        -webkit-appearance: none;
+            -moz-appearance: none;
+                appearance: none;
+        outline: 0;
+        background-color: rgba(255, 255, 255, 0.213);
+        border: 0;
+        padding: 10px 15px;
+        margin: 30px 10px;
+        color: #ffffffd7;
+        border-radius: 10px;
+        width: 100px;
+        cursor: pointer;
+        font-size: 18px;
+
+        &:hover{
+            -webkit-transition-duration: 0.25s;
+                transition-duration: 0.25s;
+            background-color: #f5f7f9a8;
+        }
+
+        &#close {
+            color: rgba(225, 225, 225, 0.864);
+            width: 40px;
+            height: 40px;
+            border-radius: 99px;
+            position: relative;
+            margin: 50px 0 10px 0;
+            transform: translateX( 200px );
+        }
+    }
+
+    /* Customize the label (the container) */
+    .container {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        font-size: 18px;
+        color: #e6e6e6ea
+    }
+
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        background-color: rgba(238, 238, 238, 0.371);
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: rgba(204, 204, 204, 0.857);
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 6px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
