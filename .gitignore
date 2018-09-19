@@ -3,3 +3,6 @@ node_modules/
 package-lock.json
 .git-credentials
 .vscode
+
+# custom files
+dev/config.js
