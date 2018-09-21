@@ -7,17 +7,17 @@ const path = require('path')
 // ======================= custom config section =======================
 // ================= custom your own environment here ==================
 const dev = {
-    // port
-    nodeServerPort:         '2018',             // port of express server
-    webpackServerPort:      '8080',             // port of webpack dev server
-    browserSyncServerPort:  '3000',             // port of browser-sync server
-
-    // other develop settings
+    // develop settings
     mode:           'development',              // 'development' or 'production' 
     watch:          true,                       // watch files or not when "npm run build"
     useHTTPS:       false,                      // use http or https server
     openBrowser:    true,                       // open browser automatically when running develop tools
     vueVersion:     'vue/dist/vue.esm.js',      // switch vue version
+
+    // port
+    nodeServerPort:         '2018',             // port of express server
+    webpackServerPort:      '8080',             // port of webpack dev server
+    browserSyncServerPort:  '3000',             // port of browser-sync server
 
     // path of directories
     dataDir:    path.resolve( process.cwd(), 'data' ),      // folder to put some files like media files, etc.

@@ -10,12 +10,12 @@ const server = express()
 if ( config.useHTTPS ) {
     const H2server = spdy.createServer(config.SSL, server)
     H2server.listen(config.nodeServerPort, async () => {
-        console.log(chalk.cyan(`listening to port ${config.nodeServerPort}...`))
+        console.log(chalk.cyan(`listening on port ${config.nodeServerPort}...`))
     })
 }
 else {
     server.listen(config.nodeServerPort, async () => {
-        console.log(chalk.cyan(`listening to port ${config.nodeServerPort}...`))
+        console.log(chalk.cyan(`listening on port ${config.nodeServerPort}...`))
     })
 }
 

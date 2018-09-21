@@ -1,8 +1,9 @@
 // specify npm scripts here
 
 const config = require(`${process.cwd()}/dev/config`)
-const chalk = require('chalk')
 const { spawn } = require('child_process')
+const concurrently = require('concurrently')
+const chalk = require('chalk')
 
 const cmd = process.argv[2]         // npm scripts command 
 const arg = process.argv.slice(3)   // arguments for npm scripts command 
@@ -28,14 +29,28 @@ else if ( cmd == 'server' )
 else if ( cmd == 'dev:node-server' )
 {
     console.log(chalk.cyan('Starting develop tools, please wait...'))
-    spawn(`concurrently`,
-    [
-        `-p`, `"{name}"`, `-n`, `" server  , webpack , browser "`, `-c`, `"black.bgYellow,bgGreen,bgCyan"`,
-        `"nodemon -q -w ${config.backendDir} ${config.backendDir}/server"`,
-        `"webpack -w --config ${config.configDir}/webpack.config.js"`,
-        `"browser-sync start -p ${config.useHTTPS ? 'https': 'http'}://localhost:${config.nodeServerPort} --port ${config.browserSyncServerPort} -f ${config.productDir} ${config.openBrowser?'':'--no-open'} --no-inject-changes --no-notify"`,
-    ], opt)
-    
+    concurrently([
+        {
+            command: `nodemon -q -w ${config.backendDir} ${config.backendDir}/server`,
+            name:'server ', prefixColor:'black.bgYellow'
+        },
+        {
+            command: `webpack -w --config ${config.configDir}/webpack.config.js`,
+            name:'webpack', prefixColor:'bgGreen'
+        },
+        {
+            command: `browser-sync start -p ${config.useHTTPS ? 'https': 'http'}://localhost:${config.nodeServerPort} --port ${config.browserSyncServerPort} -f ${config.productDir} ${config.openBrowser?'':'--no-open'} --no-inject-changes --no-notify`,
+            name:'browser', prefixColor:'bgCyan'
+        },
+    ],
+    {
+        prefix: `${chalk.white(' ')}{name}${chalk.white(' ')}`,
+        restartTries: 1,
+    }).then( (success, failure) => {
+        console.log(chalk.cyan('Please ignore previous message.'))
+        if (process.platform === 'win32')
+            process.stdout.write(chalk.cyan('Terminate current process? (Y/N): '))
+    })
 }
 
 else if ( cmd == 'dev:webpack-server' )
@@ -43,21 +58,35 @@ else if ( cmd == 'dev:webpack-server' )
     console.log(chalk.cyan('Starting webpack-dev-server...'))
     // dealing with arguments
     let [withNodeServer, writeToDisk] = [false, false]
-    if (arg.some( (arg) => { return arg == 'withNodeServer' || arg == 'n' } ))
+    let commands = [{
+        command: `webpack-dev-server -w --config ${config.configDir}/webpack.config.js --hot --progress --colors`,
+        name:'wp-server', prefixColor:'bgCyan'
+    }]
+    if (arg.some( (arg) => { return arg == 'withNodeServer' || arg == 'n' } )) {
         withNodeServer = true
-    if (arg.some( (arg) => { return arg == 'writeToDisk'    || arg == 'w' } ))
+        commands.push({
+            command: `nodemon -q -w ${config.backendDir} ${config.backendDir}/server`,
+            name:'nd-server', prefixColor:'black.bgYellow'
+        })
+    }
+    if (arg.some( (arg) => { return arg == 'writeToDisk' || arg == 'w' } )) {
         writeToDisk = true
+        commands.push({
+            command: `webpack -w --config ${config.configDir}/webpack.config.js`,
+            name:' webpack ', prefixColor:'bgGreen'
+        })
+    }
+    // run commands
     if ( withNodeServer || writeToDisk )
     {
-        spawn(`concurrently`,
-        [
-            `-p`, `"{name}"`,
-            `-n`, `" wp-server ${withNodeServer?', nd-server ':''}${writeToDisk?',  webpack  ':''}"`,
-            `-c`, `"bgCyan${withNodeServer?',black.bgYellow':''}${writeToDisk?',bgGreen':''}"`,
-            `"webpack-dev-server -w --config ${config.configDir}/webpack.config.js --hot --progress --colors"`,
-            withNodeServer?`"nodemon -q -w ${config.backendDir} ${config.backendDir}/server"`:'',
-            writeToDisk?`"webpack -w --config ${config.configDir}/webpack.config.js"`:'',
-        ], opt)
+        concurrently( commands, {
+            prefix: `${chalk.white(' ')}{name}${chalk.white(' ')}`,
+            restartTries: 1,
+        }).then( (success, failure) => {
+            console.log(chalk.cyan('Please ignore previous message.'))
+            if (process.platform === 'win32')
+                process.stdout.write(chalk.cyan('Terminate current process? (Y/N): '))
+        })
     }
     else
         spawn(`webpack-dev-server -w --config ${config.configDir}/webpack.config.js --hot --progress --colors`, opt)

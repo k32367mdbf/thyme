@@ -53,7 +53,7 @@ module.exports = {
         }
     },
     entry: {        // set up entry files
-        bundle:     `${config.frontendDir}/page/index/-.js`
+        bundle:     [ '@babel/polyfill', `${config.frontendDir}/page/index/-.js` ],
     },
     output: {       // set up output files
         path:       config.productDir,
@@ -68,13 +68,13 @@ module.exports = {
                     { loader: "html-loader" }
                 ]
             },
-            {   // entry pages
+            {   // html files (entry pages)
                 include: [ path.resolve( config.frontendDir, 'page/index/-.html') ],
                 use: [
                     // html-loader can not work with ejs-loader
                     // See: https://stackoverflow.com/questions/47112305/how-to-get-both-ejs-compilation-and-html-loader-in-html-webpack-plugin
                     // So I use this: https://blog.csdn.net/qq_33726801/article/details/79301546
-                    // but therefore you are only allowed to use ejs grammar in this file
+                    // but therefore you are only allowed to use ejs grammar in those files
                     { loader: "jcy-loader" }
                 ]
             },
@@ -92,7 +92,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: "babel-loader",         // use babel
                     options: require(`${config.configDir}/babel.config.js`)
                 }
             },
