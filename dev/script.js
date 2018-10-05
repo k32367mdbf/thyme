@@ -15,20 +15,23 @@ const opt = {                       // options for spawn function
 // =========================== add scripts here ===========================
 
 if ( cmd == 'start' )
-{
+{;(async()=>{
     console.log(chalk.cyan('Starting server...'))
+    await require(`${config.configDir}/setup`).checkVendors() // check the exsits of vendor files
     spawn(`node ${config.backendDir}/server`, opt)
-}
+})()}
 
 else if ( cmd == 'server' )
-{
+{;(async()=>{
     console.log(chalk.cyan('Starting server...'))
+    await require(`${config.configDir}/setup`).checkVendors() // check the exsits of vendor files
     spawn(`nodemon -q -w ${config.backendDir} ${config.backendDir}/server`, opt)
-}
+})()}
 
 else if ( cmd == 'dev:node-server' )
-{
+{;(async()=>{
     console.log(chalk.cyan('Starting develop tools, please wait...'))
+    await require(`${config.configDir}/setup`).checkVendors() // check the exsits of vendor files
     concurrently([
         {
             command: `nodemon -q -w ${config.backendDir} ${config.backendDir}/server`,
@@ -47,15 +50,17 @@ else if ( cmd == 'dev:node-server' )
         prefix: `${chalk.white(' ')}{name}${chalk.white(' ')}`,
         restartTries: 1,
     }).then( (success, failure) => {
-        console.log(chalk.cyan('Please ignore previous message.'))
         if (process.platform === 'win32')
             process.stdout.write(chalk.cyan('Terminate current process? (Y/N): '))
+        else
+            console.log(chalk.cyan('Processes terminated successfully!'))
     })
-}
+})()}
 
 else if ( cmd == 'dev:webpack-server' )
-{
+{;(async()=>{
     console.log(chalk.cyan('Starting webpack-dev-server...'))
+    await require(`${config.configDir}/setup`).checkVendors() // check the exsits of vendor files
     // dealing with arguments
     let [withNodeServer, writeToDisk] = [false, false]
     let commands = [{
@@ -83,23 +88,25 @@ else if ( cmd == 'dev:webpack-server' )
             prefix: `${chalk.white(' ')}{name}${chalk.white(' ')}`,
             restartTries: 1,
         }).then( (success, failure) => {
-            console.log(chalk.cyan('Please ignore previous message.'))
             if (process.platform === 'win32')
                 process.stdout.write(chalk.cyan('Terminate current process? (Y/N): '))
+            else
+                console.log(chalk.cyan('Processes terminated successfully!'))
         })
     }
     else
         spawn(`webpack-dev-server -w --config ${config.configDir}/webpack.config.js --hot --progress --colors`, opt)
-}
+})()}
 
 else if ( cmd == 'build:bundle' )
-{
+{;(async()=>{
     console.log(chalk.cyan('Starting to build bundle files...'))
+    await require(`${config.configDir}/setup`).checkVendors() // check the exsits of vendor files
     const process = spawn(`webpack --config ${config.configDir}/webpack.config.js`, opt)
     process.on('close', () => {
         console.log(chalk.green('Bundle files built!'))
     })
-}
+})()}
 
 else if ( cmd == 'build:vendor' )
 {

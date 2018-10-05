@@ -5,4 +5,4 @@ package-lock.json
 .vscode
 
 # custom files
-dev/config.js
+dev/env.js

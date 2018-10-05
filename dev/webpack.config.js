@@ -31,7 +31,7 @@ module.exports = {
         inline: true,
         stats: 'minimal',           // command line output (webpack-dev-server)
         open: config.openBrowser,   // open broswer automatically
-        openPage: '/page',          // open productDir/page/index.html
+        openPage: 'page',           // open /page/index.html
         disableHostCheck: true,     // bypasses host checking
         proxy: {                    // api proxy
             '/api': {
@@ -53,7 +53,7 @@ module.exports = {
         }
     },
     entry: {        // set up entry files
-        bundle:     [ '@babel/polyfill', `${config.frontendDir}/page/index/-.js` ],
+        bundle:     [ '@babel/polyfill', `page/index/-.js` ],
     },
     output: {       // set up output files
         path:       config.productDir,

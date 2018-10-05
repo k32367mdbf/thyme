@@ -21,6 +21,7 @@
     "start": "node dev/script start",
     "test": "node dev/script test",
     "server": "node dev/script server",
+    "setup": "node dev/setup",
     "dev:node-server": "node dev/script dev:node-server",
     "dev:webpack-server": "node dev/script dev:webpack-server",
     "build:bundle": "node dev/script build:bundle",
